@@ -127,7 +127,7 @@ class _IssuesMessagePageState extends State<IssuesMessagePage> {
 
   Widget _descriptionEditor() {
     final theme = new ZefyrThemeData(
-      toolbarTheme: ZefyrToolbarTheme.fallback(context).copyWith(
+      toolbarTheme: ToolbarTheme.fallback(context).copyWith(
         color: Colors.grey.shade800,
         toggleColor: Colors.grey.shade900,
         iconColor: Colors.white,

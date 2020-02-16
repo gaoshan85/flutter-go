@@ -80,6 +80,7 @@ class _ScrollbarPainterDemoState extends State<ScrollbarPainterDemo>
     _currentPlatform = theme.platform;
 
     switch (_currentPlatform) {
+      //case TargetPlatform.macOS:
       case TargetPlatform.iOS:
         // On iOS, stop all local animations. CupertinoScrollbar has its own
         // animations.
@@ -137,6 +138,7 @@ class _ScrollbarPainterDemoState extends State<ScrollbarPainterDemo>
   @override
   Widget build(BuildContext context) {
     switch (_currentPlatform) {
+      //case TargetPlatform.macOS:
       case TargetPlatform.iOS:
         return CupertinoScrollbar(
           child: widget.child,

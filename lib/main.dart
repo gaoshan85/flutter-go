@@ -18,6 +18,7 @@ import 'package:flutter_go/event/event_model.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter_go/model/widget.dart';
 import 'package:flutter_go/standard_pages/index.dart';
+
 //import 'views/welcome_page/index.dart';
 import 'package:flutter_go/utils/net_utils.dart';
 
@@ -205,12 +206,14 @@ void _startupJpush() async {
   print("初始化jpush成功");
 }
 
-void main() async {
+///入口程序
+ main() async {
+  //在runApp()之前如果访问二进制文件或者初始化插件，需要先调用.
   WidgetsFlutterBinding.ensureInitialized();
-  final provider = new Provider();
+  final provider = Provider();
   await provider.init(true);
   sp = await SpUtil.getInstance();
-  new SearchHistoryList(sp);
+  SearchHistoryList(sp);
 
   await DataUtils.getWidgetTreeList().then((List json) {
     List data =
@@ -219,5 +222,5 @@ void main() async {
     print("Application.widgetTree>>>> ${Application.widgetTree}");
   });
   db = Provider.db;
-  runApp(new MyApp());
+  runApp(MyApp());
 }

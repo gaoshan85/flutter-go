@@ -8,8 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import './industry_bloc.dart';
-
-/// import './industry_event.dart';
 import './industry_state.dart';
 
 final SuggestionBloc suggestion = SuggestionBloc();
@@ -41,10 +39,8 @@ class _IndustryState extends State<IndustryPage> {
         return Center(
           child: Text('没有适合的结果,更换查询条件试试'),
         );
-      } else {
-        if (widget.itemTitle is Function) {
-          return widget.itemTitle(state);
-        }
+      } else if (widget.itemTitle is Function) {
+          return widget.itemTitle(state) as Widget;
       }
     }
     return Center(child: Text('没有适合的结果,更换查询条件试试'));

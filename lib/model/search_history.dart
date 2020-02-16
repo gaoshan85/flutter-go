@@ -12,13 +12,17 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_go/utils/shared_preferences.dart';
 
+///查询记录实例
 class SearchHistory {
+  ///关键词
   final String name;
+  ///目标地址
   final String targetRouter;
-
+  ///构造函数
   SearchHistory({@required this.name, @required this.targetRouter});
 }
 
+///
 class SearchHistoryList {
   static SpUtil _sp;
   static SearchHistoryList _instance;
@@ -33,6 +37,7 @@ class SearchHistoryList {
     return _instance;
   }
 
+  ///
   factory SearchHistoryList([SpUtil sp]) {
     if (sp == null && _instance == null) {
       print(new ArgumentError(

@@ -6,9 +6,9 @@
 /// email: zhu.yan@alibaba-inc.com
 ///
 class Suggestion {
-  String query;
+  dynamic query;
   List<Suggestions> suggestions;
-  int code;
+  dynamic code;
 
   Suggestion({this.query, this.suggestions, this.code});
 
@@ -17,7 +17,7 @@ class Suggestion {
     if (json['suggestions'] != null) {
       suggestions = new List<Suggestions>();
       json['suggestions'].forEach((v) {
-        suggestions.add(new Suggestions.fromJson(v));
+        suggestions.add(Suggestions.fromJson(v));
       });
     }
     code = json['code'];
@@ -36,7 +36,7 @@ class Suggestion {
 
 class Suggestions {
   Data data;
-  String value;
+  dynamic value;
 
   Suggestions({this.data, this.value});
 
@@ -56,7 +56,7 @@ class Suggestions {
 }
 
 class Data {
-  String category;
+  dynamic category;
 
   Data({this.category});
 

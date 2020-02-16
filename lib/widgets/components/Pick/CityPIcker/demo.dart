@@ -12,14 +12,15 @@ class CityPickerDemo extends StatefulWidget {
   _Demo createState() => _Demo();
 }
 
+///
 class _Demo extends State<CityPickerDemo> {
   String _result;
   show(context) async {
-    Result temp = await CityPickers.showCityPicker(
+    Result temp = (await CityPickers.showCityPicker(
       context: context,
       // locationCode: '640221',
       height: 400,
-    );
+    )) as Result;
     setState(() {
       _result = "${temp.toString()}";
     });

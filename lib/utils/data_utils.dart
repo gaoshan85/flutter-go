@@ -5,17 +5,16 @@ import 'package:flutter_go/model/collection.dart';
 import 'package:flutter_go/model/version.dart';
 import 'package:flutter_go/model/widget.dart';
 import 'package:package_info/package_info.dart';
-
-/// import 'package:flutter_go/model/responseData.dart';
-
 import './net_utils.dart';
 import '../model/user_info.dart';
 import 'package:flutter_go/api/api.dart';
 import 'package:flutter_go/routers/application.dart';
 import 'package:flutter_go/routers/routers.dart';
 
+///API帮助类
 class DataUtils {
-  // 登陆获取用户信息
+
+  ///登陆获取用户信息
   static Future doLogin(Map<String, String> params) async {
     var response = await NetUtils.post(Api.DO_LOGIN, params);
     try {

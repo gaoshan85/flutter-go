@@ -14,6 +14,7 @@ import 'package:flutter_go/routers/application.dart';
 import 'package:flutter_go/routers/routers.dart';
 import 'package:flutter_go/model/user_info.dart';
 
+///登录页面
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -26,28 +27,31 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   // 利用FocusNode和_focusScopeNode来控制焦点 可以通过FocusNode.of(context)来获取widget树中默认的_focusScopeNode
-  FocusNode _emailFocusNode = new FocusNode();
-  FocusNode _passwordFocusNode = new FocusNode();
-  FocusScopeNode _focusScopeNode = new FocusScopeNode();
-  UserInfoControlModel _userInfoControlModel = new UserInfoControlModel();
+  FocusNode _emailFocusNode =  FocusNode();
+  FocusNode _passwordFocusNode =  FocusNode();
+  FocusScopeNode _focusScopeNode =  FocusScopeNode();
+  UserInfoControlModel _userInfoControlModel =  UserInfoControlModel();
 
-  GlobalKey<FormState> _signInFormKey = new GlobalKey();
+  GlobalKey<FormState> _signInFormKey =  GlobalKey();
+
+  //
   TextEditingController _userNameEditingController =
-      new TextEditingController();
+       TextEditingController();
   TextEditingController _passwordEditingController =
-      new TextEditingController();
+       TextEditingController();
 
   bool isShowPassWord = false;
   String username = '';
   String password = '';
-  bool isLoading = false;
+  bool isLoading = false;//加载进度状态标识
 
   @override
   void initState() {
     super.initState();
+    ////初始化用户信息，读取本地存储SP。
     try {
       _userInfoControlModel.getAllInfo().then((list) {
-        if (list.length > 0) {
+        if (list.isNotEmpty) {
           UserInfo _userInfo = list[0];
           setState(() {
             _userNameEditingController.text = _userInfo.username;
@@ -60,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
     } catch (err) {
       print('读取用户本地存储的用户信息出错 $err');
     }
-
+    ///
     ApplicationEvent.event.on<UserGithubOAuthEvent>().listen((event) {
       print('loginName:${event.loginName} token:${event.token} 1234567');
       if (event.isSuccess == true) {
@@ -96,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-// 创建登录界面的TextForm
+/// 创建登录界面的TextForm
   Widget buildSignInTextForm() {
     return Container(
       decoration: BoxDecoration(
@@ -228,7 +232,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   // 登陆操作
-  doLogin() {
+  void doLogin() {
     print("doLogin");
     _signInFormKey.currentState.save();
     setState(() {
@@ -395,7 +399,7 @@ class _LoginPageState extends State<LoginPage> {
                               Application.router.navigateTo(
                                 context,
                                 Routes.home,
-                                clearStack: true,
+                                //clearStack: true,
                                 transition: TransitionType.nativeModal,
                               );
                             },

@@ -62,7 +62,9 @@ class _DrawerPageState extends State<DrawerPage> {
                     if (result) {
                       Application.router.navigateTo(
                           context, '${Routes.loginPage}',
-                          transition: TransitionType.native, clearStack: true);
+                          transition: TransitionType.native,
+                          //clearStack: true
+                      );
                     }
                   });
                 },
@@ -86,8 +88,12 @@ class _DrawerPageState extends State<DrawerPage> {
     if (hasLogin) {
       logoutDialog(context);
     } else {
-      Application.router.navigateTo(context, '${Routes.loginPage}',
-          transition: TransitionType.native, clearStack: true);
+      Application.router.navigateTo(
+          context,
+          '${Routes.loginPage}',
+          transition: TransitionType.native,
+          //clearStack: true
+      );
     }
   }
 
