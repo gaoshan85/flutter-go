@@ -352,7 +352,7 @@ class WidgetTree {
     });
     return list;
   }
-
+  ///
   static CategoryComponent getCommonItemById(
       List<int> path, CategoryComponent root) {
     print("getCommonItemByPath $path");
@@ -362,9 +362,6 @@ class WidgetTree {
     /// int first = path.first;
     path = path.sublist(1);
     print("path:::: $path");
-    if (path.length >= 0) {
-//      childLeaf = root.getChild(path.first);
-    }
 
     return childLeaf;
   }

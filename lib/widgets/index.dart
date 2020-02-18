@@ -2,7 +2,9 @@ import 'elements/index.dart' as elements;
 import 'components/index.dart' as components;
 import 'themes/index.dart' as themes;
 
+///组件Demo列表
 class WidgetDemoList {
+  ///
   WidgetDemoList();
 
   List getDemos() {

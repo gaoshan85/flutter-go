@@ -1,3 +1,5 @@
+
+///应用API接口定义
 class Api {
 //   static const String BASE_URL = 'http://flutter-go.alibaba.net/';
   static const String BASE_URL = 'https://flutter-go.pub/api/';
@@ -16,11 +18,9 @@ class Api {
 
 //  static  const String LOTOUT = BASE_URL+'logout';//退出登陆
 
-  static const String GET_ALL_COLLECTION =
-      BASE_URL + 'auth/getAllUserCollection'; //获取全部收藏
+  static const String GET_ALL_COLLECTION = BASE_URL + 'auth/getAllUserCollection'; //获取全部收藏
 
-  static const String REMOVE_COLLECTION =
-      BASE_URL + 'auth/removeCollection'; //移除收藏
+  static const String REMOVE_COLLECTION = BASE_URL + 'auth/removeCollection'; //移除收藏
 
   static const String ADD_COLLECTION = BASE_URL + 'auth/addCollection'; //添加收藏
 
@@ -28,7 +28,7 @@ class Api {
 
   static const String SET_THEMECOLOR = BASE_URL + 'auth/setThemeColor'; //设置主题颜色
 
-  static const String GET_THEMECOLOR = BASE_URL + '/getThemeColor'; //获取主题颜色
+  static const String GET_THEMECOLOR = BASE_URL + 'getThemeColor'; //获取主题颜色
 
   static const String GET_WIDGET_TREE = BASE_URL + 'getCateList'; //获取widget列表树
 

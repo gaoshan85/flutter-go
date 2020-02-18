@@ -11,7 +11,7 @@ import 'package:flutter_go/api/api.dart';
 import 'package:flutter_go/routers/application.dart';
 import 'package:flutter_go/routers/routers.dart';
 
-///API帮助类
+/// API帮助类
 class DataUtils {
 
   ///登陆获取用户信息
@@ -153,7 +153,7 @@ class DataUtils {
     return response != null && response['success'];
   }
 
-  // 获取全部收藏
+  /// 获取全部收藏
   static Future getAllCollections(context) async {
     var response = await NetUtils.get(Api.GET_ALL_COLLECTION);
     List<Collection> responseList = [];

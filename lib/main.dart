@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/rendering.dart';
+import 'routers/application.dart';
 import 'routers/routers.dart';
 import 'routers/application.dart' show Application;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -177,10 +178,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 //    WidgetTree.getCommonItemByPath([15, 17], Application.widgetTree);
-    return new MaterialApp(
-      title: 'titles',
-      theme: new ThemeData(
-        primaryColor: Color(this.themeColor),
+    return MaterialApp(
+      title: 'titles',//标题
+      theme: ThemeData( //主题
+        primaryColor: Color(themeColor),
         backgroundColor: Color(0xFFEFEFEF),
         accentColor: Color(0xFF888888),
         textTheme: TextTheme(
@@ -188,14 +189,20 @@ class _MyAppState extends State<MyApp> {
           body1: TextStyle(color: Color(0xFF888888), fontSize: 16.0),
         ),
         iconTheme: IconThemeData(
-          color: Color(this.themeColor),
+          color: Color(themeColor),
           size: 35.0,
         ),
       ),
-      home: new Scaffold(body: showWelcomePage()),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: Application.router.generator,
-      navigatorObservers: <NavigatorObserver>[Analytics.observer],
+      home: Scaffold(body: showWelcomePage()),//进入程序后显示的第一个页面,传入的是一个Widget，但实际上这个Widget需要包裹一个Scaffold以显示该程序使用Material Design风
+//     routes: {
+//        '/home':(BuildContext context) => HomePage(),
+//        '/home/one':(BuildContext context) => OnePage(),
+//      },
+//     initialRoute:'/home/one'//初始路由，当用户进入程序时，自动打开对应的路由。
+      debugShowCheckedModeBanner: false,//调试显示检查模式横幅
+      onGenerateRoute: Application.router.generator,//当通过Navigation.of(context).pushNamed跳转路由时，在routes查找不到时，会调用该方法.
+      //onUnknownRoute:RouteFactory //未知路由
+      navigatorObservers: <NavigatorObserver>[Analytics.observer],//路由观察器，当调用Navigator的相关方法时，会回调相关的操作
     );
   }
 }
@@ -212,6 +219,7 @@ void _startupJpush() async {
   WidgetsFlutterBinding.ensureInitialized();
   final provider = Provider();
   await provider.init(true);
+  db = Provider.db;
   sp = await SpUtil.getInstance();
   SearchHistoryList(sp);
 
@@ -221,6 +229,6 @@ void _startupJpush() async {
     Application.widgetTree = WidgetTree.buildWidgetTree(data);
     print("Application.widgetTree>>>> ${Application.widgetTree}");
   });
-  db = Provider.db;
+
   runApp(MyApp());
 }
